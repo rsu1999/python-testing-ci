@@ -4,7 +4,7 @@ def dockerImageTag = "${projectName}:${version}"
 
 
 pipeline {
-   agent  any 
+   agent  { dockerfile true }
 
    stages{
       

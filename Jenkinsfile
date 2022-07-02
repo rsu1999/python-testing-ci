@@ -6,12 +6,15 @@ def dockerImageTag = "${projectName}:${version}"
 pipeline {
    agent  any 
 
+   stages{
+      
    stage('Build Container') {
       steps {
         sh "docker build -t testing-ci ."
       }
     }
 
+ 
     stage('Deploy Container To Openshift') {
       steps {
         sh "oc login https://linuxops-miss31.conygre.com:8443/console/ --username admin --password admin --insecure-skip-tls-verify=true"
@@ -21,6 +24,6 @@ pipeline {
         sh "oc expose svc/${projectName}"
       }
     }
-
+   }
    
 }

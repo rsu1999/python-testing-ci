@@ -10,10 +10,7 @@ pipeline {
       
    stages {
       
-      stage('Initialize'){
-        def dockerHome = tool 'mydocker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
+    
       stage('Tests') {
          steps {
             sh '/bin/bash -c "pytest"'

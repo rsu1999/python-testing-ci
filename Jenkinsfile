@@ -5,8 +5,14 @@ def dockerImageTag = "${projectName}:${version}"
 
 pipeline {
    agent  { dockerfile true }
+   
 
    stages{
+      
+       stage('Initialize'){
+        def dockerHome = tool 'mydocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
       
    stage('Build Container') {
       steps {

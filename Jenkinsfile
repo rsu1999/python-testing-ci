@@ -11,7 +11,7 @@ pipeline {
           steps {
             sh "docker build -t ${dockerImageTag} ."
             
-            sh "docker start -t -d ${dockerImageTag}  sleep 300"
+            sh "docker start ${dockerImageTag} sleep 300"
             
             sh 'docker exec ${dockerImageTag} /bin/bash -c "pytest"'
           }

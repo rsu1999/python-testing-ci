@@ -14,11 +14,8 @@ pipeline {
           }
       }
     
-    stage('Tests') {
-         steps {
-            sh '/bin/bash -c "pytest"'
-         }
-      }
+  
+      
     stage('Deploy Container To Openshift') {
       steps {
         sh "oc login https://linuxops-miss35.conygre.com:8443 --username admin --password admin --insecure-skip-tls-verify=true"

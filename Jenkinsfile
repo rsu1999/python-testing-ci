@@ -10,6 +10,7 @@ pipeline {
           // this stage also builds and tests the Java project using Maven
           steps {
             sh "docker build -t ${dockerImageTag} ."
+            sh "docker run --rm ${dockerImageTag}"
           }
       }
     

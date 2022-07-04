@@ -11,6 +11,7 @@ pipeline {
           steps {
             sh "docker build -t ${dockerImageTag} ."
             sh "docker run --rm ${dockerImageTag}"
+            sh "docker exec ${dockerImageTag} pytest"
           }
       }
     

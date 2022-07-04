@@ -10,8 +10,8 @@ pipeline {
           // this stage also builds and tests the Java project using Maven
           steps {
             sh "docker build -t ${dockerImageTag} ."
-            sh "docker run -t -d --name test --rm ${dockerImageTag}"
-            sh 'docker exec test /bin/bash -c "pytest"'
+            sh "docker run -t -d --name test1 --rm ${dockerImageTag}"
+            sh 'docker exec test1 /bin/bash -c "pytest"'
           }
       }
     

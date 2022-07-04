@@ -1,4 +1,4 @@
-def projectName = 'demospring'
+def projectName = 'sea-bass'
 def version = "0.0.${currentBuild.number}"
 def dockerImageTag = "${projectName}:${version}"
 
@@ -11,6 +11,12 @@ pipeline {
           steps {
             sh "docker build -t ${dockerImageTag} ."
           }
+      }
+    
+    stage('Tests') {
+         steps {
+            sh '/bin/bash -c "pytest"'
+         }
       }
     stage('Deploy Container To Openshift') {
       steps {

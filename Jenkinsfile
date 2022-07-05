@@ -13,7 +13,7 @@ pipeline {
 
             sh "docker build -t ${dockerImageTag} ."
             sh "docker run -t -d --rm --name ${version} ${dockerImageTag} sleep 300"
-            sh "docker exec ${version} /bin/bash -c 'pytest'"
+            sh "docker exec ${version} /bin/sh -c 'pytest'"
           }
       }
     

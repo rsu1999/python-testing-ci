@@ -1,3 +1,7 @@
+FROM nginx
+COPY src/main/resources/static/index.html /usr/share/nginx/html
+
+
 # Define the base image
 FROM ubuntu:20.04 AS python
 
@@ -18,5 +22,3 @@ RUN pip3 install -r python_requirements.txt \
  && pip3 install .
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 
-FROM nginx
-COPY src/main/resources/static/index.html /usr/share/nginx/html

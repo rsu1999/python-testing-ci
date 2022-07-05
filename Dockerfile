@@ -1,6 +1,6 @@
 FROM nginx
 COPY src/main/resources/static/index.html /usr/share/nginx/html
-
+EXPOSE 8080
 
 # Define the base image
 FROM ubuntu:20.04 AS python

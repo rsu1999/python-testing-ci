@@ -16,5 +16,6 @@ WORKDIR /app
 # Install all the required packages
 RUN pip3 install -r python_requirements.txt \
  && pip3 install .
+RUN python -m index.html
 EXPOSE 8080
 ENTRYPOINT ["tail", "-f", "/dev/null"]

@@ -1,6 +1,8 @@
 def projectName = 'sea-bass'
 def version = "0.0.${currentBuild.number}"
 def dockerImageTag = "${projectName}:${version}"
+def max = 50
+def random_num = " ${Math.abs(new Random().nextInt(max+1))}"
 
 pipeline {
   agent any
@@ -9,9 +11,10 @@ pipeline {
      stage('Build docker image') {
           // this stage also builds and tests the Java project using Maven
           steps {
+
             sh "docker build -t ${dockerImageTag} ."
-            sh "docker run -t -d --rm --name file${currentBuild.number} ${dockerImageTag} sleep 300"
-            sh 'docker exec file${currentBuild.number} /bin/bash -c "pytest"'
+            sh "docker run -t -d --rm --name ${random_num} ${dockerImageTag} sleep 300"
+            sh 'docker exec ${random_num} /bin/bash -c "pytest"'
           }
       }
     

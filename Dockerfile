@@ -1,5 +1,5 @@
 # Define the base image
-FROM ubuntu:20.04
+FROM ubuntu:20.04 AS python
 
 # Install required packages
 RUN apt-get update \
@@ -19,5 +19,5 @@ RUN pip3 install -r python_requirements.txt \
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 FROM nginx:alpine
-COPY . /usr/share/nginx/html
+COPY src/main/resources/static/index.html /usr/share/nginx/html
 EXPOSE 8080

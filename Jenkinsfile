@@ -13,7 +13,7 @@ pipeline {
 
             sh "docker build -t ${dockerImageTag} ."
             sh "docker run -t -d --rm --name ${version} ${dockerImageTag} sleep 300"
-            //sh "docker exec ${version} /bin/sh -c 'pytest'"
+            sh "docker exec ${version} /bin/sh -c 'pytest'"
           }
       }
     
@@ -25,7 +25,7 @@ pipeline {
         sh "oc project ${projectName} || oc new-project ${projectName}"
         sh "oc delete all --selector app=${projectName} || echo 'Unable to delete all previous openshift resources'"
         sh "oc new-app ${dockerImageTag} -l version=${version}"
-        sh "oc expose svc/${projectName}"
+        
         
       }
     }

@@ -18,6 +18,5 @@ RUN pip3 install -r python_requirements.txt \
  && pip3 install .
 ENTRYPOINT ["tail", "-f", "/dev/null"]
 
-FROM nginx:alpine
+FROM nginx
 COPY src/main/resources/static/index.html /usr/share/nginx/html
-EXPOSE 8080

@@ -8,4 +8,4 @@ setup(
 )
 
 ## This is the first edit that we are making
-## Version 2.0
+## Version 2.1

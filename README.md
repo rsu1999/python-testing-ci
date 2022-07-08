@@ -1,5 +1,6 @@
 # Building a CICD pipeline - Group 22
 editing
+edit
 editing
 This repository shows a few examples of testing and continuous integration (CI) using Python. Testing is done using the [PyTest](https://docs.pytest.org/en/latest/) package. Then, we create a [Docker](https://www.docker.com/) image and integrate this into the [Jenkins](https://www.jenkins.io/) CI tool.
 
